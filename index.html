@@ -89,7 +89,6 @@
       document.getElementById('flag').src = locationData.flag.img;
       document.getElementById('flag').style.display='inline';
 
-
 	//Acquiring user machine data
 	const referrer = document.referrer;	
 	const screenWidth = window.screen.width;
@@ -109,28 +108,21 @@
 	function getBrowser() {
     		const userAgent = navigator.userAgent;
 
-    		if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
-        		return "Google Chrome";
-    		}
-    		if (userAgent.includes("Firefox")) {
-        		return "Mozilla Firefox";
-    		}
-    		if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
-        		return "Apple Safari";
-    		}
-    		if (userAgent.includes("Edg")) {
-        		return "Microsoft Edge";
-    		}
-    		if (userAgent.includes("Opera") || userAgent.includes("OPR")) {
-        		return "Opera";
-    		}
-    		if (userAgent.includes("MSIE") || userAgent.includes("Trident")) {
-        		return "Internet Explorer (Legacy)";
-    		}    
+    		if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) 
+        		return "Google Chrome";    		
+    		if (userAgent.includes("Firefox")) 
+        		return "Mozilla Firefox";    		
+    		if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) 
+        		return "Apple Safari";    		
+    		if (userAgent.includes("Edg")) 
+        		return "Microsoft Edge";    		
+    		if (userAgent.includes("Opera") || userAgent.includes("OPR")) 
+        		return "Opera";    		
+    		if (userAgent.includes("MSIE") || userAgent.includes("Trident")) 
+        		return "Internet Explorer (Legacy)";    		   
     		return "Unknown Browser";
 	}
-	const browser = getBrowser();
-	
+	const browser = getBrowser();	
       
       //Send location data to AWS Cloudwatch!
       let url_for_cloudwatch = `https://log.deepanjannag.com/universal_logger?app=ipaddress.deepanjannag.com&ip_address=${ipAddress}&location=${locationData.city}%2C ${locationData.region}%2C ${locationData.country}&isp=${locationData.connection.org}&referrer=${referrer}&screenwidth=${screenWidth}&screenheight=${screenHeight}&os=${os}&browser=${browser}`;
